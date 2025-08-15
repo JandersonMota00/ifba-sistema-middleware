@@ -32,7 +32,55 @@ Projetar e desenvolver um sistema modular para gerenciamento de dispositivos  in
 - **Framework:** Spring
 
 ## Estrutura do Projeto
-
+```
+ifba-sistema-middleware/
+├── .gitignore
+├── pom.xml
+├── README.md
+└── src/
+    └── main/
+        ├── java/
+        │   └── com/
+        │       └── ifba/
+        │           └── middleware/
+        │               ├── command/
+        │               │   ├── Command.java
+        │               │   ├── FanOnCommand.java
+        │               │   └── LightOnCommand.java
+        │               ├── composite/
+        │               │   ├── Button.java
+        │               │   ├── Panel.java
+        │               │   ├── Text.java
+        │               │   └── UIComponent.java
+        │               ├── decorator/
+        │               │   ├── DarkThemeDecorator.java
+        │               │   ├── LightThemeDecorator.java
+        │               │   └── ThemedComponent.java
+        │               ├── device/
+        │               │   ├── Device.java
+        │               │   ├── Fan.java
+        │               │   ├── Light.java
+        │               │   └── Sensor.java
+        │               ├── factory/
+        │               │   ├── DefaultDeviceFactory.java
+        │               │   └── DeviceFactory.java
+        │               ├── logger/
+        │               │   └── Logger.java
+        │               ├── observer/
+        │               │   ├── DeviceEvent.java
+        │               │   └── EventHandler.java
+        │               ├── singleton/
+        │               │   └── SystemConfig.java
+        │               ├── simulation/
+        │               │   └── SimulationService.java
+        │               ├── strategy/
+        │               │   ├── DelayedResponseStrategy.java
+        │               │   ├── ImmediateResponseStrategy.java
+        │               │   └── ResponseStrategy.java
+        │               └── SmartDeviceMiddlewareApplication.java
+        └── resources/
+            └── application.properties
+```
 
 ## Diagrama UML
 
