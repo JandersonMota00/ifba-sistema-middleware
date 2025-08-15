@@ -27,4 +27,33 @@ Projetar e desenvolver um sistema modular para gerenciamento de dispositivos  in
   </tr>
 </table>
 
+## Tecnologias
+- **Linguagem:** Java 21
+- **Framework:** Spring
+
 ## Estrutura do Projeto
+
+
+## Diagrama UML
+
+
+## Documentação Técnica
+
+### Padrões de Design GOF Aplicados
+
+* **Singleton (Criação)**: Utilizado implicitamente pelo Spring, onde cada `@Component`, `@Service` e `@Configuration` é um bean singleton por padrão. A classe `SystemConfig` é um exemplo.
+* **Factory Method (Criação)**: A interface `DeviceFactory` e sua implementação `DefaultDeviceFactory` demonstram este padrão, centralizando a criação de dispositivos e permitindo a adição de novos tipos.
+* **Observer (Comportamental)**: Implementado através do sistema de eventos do Spring (`ApplicationEventPublisher` e `ApplicationListener`). Um `EventSubject` publica eventos, e os `ConcreteObserver` escutam e reagem a eles de forma desacoplada.
+* **Command (Comportamental)**: A interface `Command` e suas classes concretas encapsulam ações, permitindo que elas sejam parametrizadas e executadas de forma flexível.
+* **Strategy (Comportamental)**: A interface `ResponseStrategy` define diferentes algoritmos de resposta a eventos, permitindo a troca de comportamento em tempo de execução.
+* **Composite (Estrutural)**: O padrão `UIComponent` e suas implementações (`Panel`, `Button`, `Text`) permitem a construção de interfaces hierárquicas, tratando elementos individuais e compostos de forma uniforme.
+* **Decorator (Estrutural)**: A interface `ThemedComponent` e as classes `DarkThemeDecorator` e `LightThemeDecorator` demonstram a adição de funcionalidades de tema à interface simulada de forma dinâmica.
+
+### Princípios SOLID
+
+A arquitetura do projeto adere a todos os princípios SOLID:
+* **SRP**: Cada classe tem uma única responsabilidade.
+* **OCP**: O sistema é aberto para extensão (novos dispositivos, estratégias, temas) sem modificação do código existente.
+* **LSP**: As subclasses de `Device` podem substituir a classe base sem causar erros.
+* **ISP**: Interfaces como `Command` e `Observer` são pequenas e focadas.
+* **DIP**: O código depende de abstrações (interfaces) em vez de implementações concretas, o que é facilitado pela injeção de dependência do Spring.
