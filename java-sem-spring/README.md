@@ -81,6 +81,208 @@ ifba-sistema-middleware/
 
 ## Diagrama UML
 
+```mermaid
+classDiagram
+    %% Padrão Singleton
+    class SystemConfig {
+        -instance: SystemConfig
+        +getInstance(): SystemConfig
+        +getProperty(key: String): String
+    }
+    
+    %% Padrão Factory
+    class DeviceFactory {
+        <<interface>>
+        +createDevice(type: String, name: String, state: Object): Device
+    }
+    
+    class DefaultDeviceFactory {
+        +createDevice(type: String, name: String, state: Object): Device
+    }
+    
+    %% Dispositivos
+    class Device {
+        <<interface>>
+        +getDeviceId(): String
+        +getDeviceName(): String
+        +getState(): Object
+        +turnOn(): void
+        +turnOff(): void
+    }
+    
+    class Light {
+        -deviceId: String
+        -deviceName: String
+        -isOn: boolean
+        +turnOn(): void
+        +turnOff(): void
+    }
+    
+    class Fan {
+        -deviceId: String
+        -deviceName: String
+        -speed: int
+        +turnOn(): void
+        +turnOff(): void
+    }
+    
+    class Sensor {
+        -deviceId: String
+        -deviceName: String
+        -value: double
+        +readValue(): double
+    }
+    
+    %% Padrão Command
+    class Command {
+        <<interface>>
+        +execute(): String
+    }
+    
+    class LightOnCommand {
+        -light: Light
+        +execute(): String
+    }
+    
+    class FanOnCommand {
+        -fan: Fan
+        +execute(): String
+    }
+    
+    %% Padrão Observer
+    class EventPublisher {
+        -listeners: List~EventListener~
+        +addListener(listener: EventListener): void
+        +publishEvent(event: Event): void
+    }
+    
+    class EventListener {
+        <<interface>>
+        +onEvent(event: Event): void
+    }
+    
+    class DeviceEventListener {
+        +onEvent(event: Event): void
+    }
+    
+    class Event {
+        <<interface>>
+        +getEventType(): String
+        +getData(): Object
+    }
+    
+    class DeviceEvent {
+        -eventType: String
+        -device: Device
+        +getEventType(): String
+        +getData(): Object
+    }
+    
+    %% Padrão Strategy
+    class ResponseStrategy {
+        <<interface>>
+        +execute(command: Command): void
+    }
+    
+    class ImmediateResponseStrategy {
+        +execute(command: Command): void
+    }
+    
+    class DelayedResponseStrategy {
+        -delay: long
+        +execute(command: Command): void
+    }
+    
+    %% Padrão Composite
+    class UIComponent {
+        <<interface>>
+        +render(): void
+    }
+    
+    class Panel {
+        -components: List~UIComponent~
+        +add(component: UIComponent): void
+        +render(): void
+    }
+    
+    class Button {
+        -text: String
+        +render(): void
+    }
+    
+    class Text {
+        -content: String
+        +render(): void
+    }
+    
+    %% Padrão Decorator
+    class ThemedComponent {
+        <<interface>>
+        +render(): void
+    }
+    
+    class DarkThemeDecorator {
+        -component: ThemedComponent
+        +render(): void
+    }
+    
+    class LightThemeDecorator {
+        -component: ThemedComponent
+        +render(): void
+    }
+    
+    %% Outros
+    class Logger {
+        +log(message: String): void
+        +error(message: String): void
+    }
+    
+    class SimulationService {
+        -devices: List~Device~
+        -eventPublisher: EventPublisher
+        +startSimulation(): void
+        +stopSimulation(): void
+    }
+    
+    class Main {
+        +main(args: String[]): void
+    }
+    
+    %% Relacionamentos
+    DeviceFactory <|.. DefaultDeviceFactory
+    Device <|.. Light
+    Device <|.. Fan
+    Device <|.. Sensor
+    
+    Command <|.. LightOnCommand
+    Command <|.. FanOnCommand
+    LightOnCommand --> Light
+    FanOnCommand --> Fan
+    
+    EventListener <|.. DeviceEventListener
+    Event <|.. DeviceEvent
+    EventPublisher --> EventListener
+    DeviceEvent --> Device
+    
+    ResponseStrategy <|.. ImmediateResponseStrategy
+    ResponseStrategy <|.. DelayedResponseStrategy
+    ResponseStrategy --> Command
+    
+    UIComponent <|.. Panel
+    UIComponent <|.. Button
+    UIComponent <|.. Text
+    Panel --> UIComponent
+    
+    ThemedComponent <|.. DarkThemeDecorator
+    ThemedComponent <|.. LightThemeDecorator
+    DarkThemeDecorator --> ThemedComponent
+    LightThemeDecorator --> ThemedComponent
+    
+    DefaultDeviceFactory --> Device
+    SimulationService --> Device
+    SimulationService --> EventPublisher
+    Main --> SimulationService
+```
 
 ## Documentação Técnica
 
