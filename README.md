@@ -31,6 +31,9 @@ Projetar e desenvolver um sistema modular para gerenciamento de dispositivos  in
 - **Linguagem:** Java 21
 
 ## Estrutura do Projeto
+
+Prioridade para a pasta `java-sem-spring`
+
 ```
 ifba-sistema-middleware/
 └── java-sem-spring
