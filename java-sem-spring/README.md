@@ -29,7 +29,6 @@ Projetar e desenvolver um sistema modular para gerenciamento de dispositivos  in
 
 ## Tecnologias
 - **Linguagem:** Java 21
-- **Framework:** Spring
 
 ## Estrutura do Projeto
 ```
