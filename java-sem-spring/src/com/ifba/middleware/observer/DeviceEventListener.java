@@ -1,3 +1,9 @@
+package com.ifba.middleware.observer;
+
+import java.time.LocalDateTime;
+import com.ifba.middleware.observer.EventListener;
+import com.ifba.middleware.observer.Event;
+
 public class DeviceEventListener implements EventListener {
     
     @Override

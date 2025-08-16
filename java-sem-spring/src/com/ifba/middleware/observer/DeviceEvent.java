@@ -1,3 +1,8 @@
+package com.ifba.middleware.observer;
+
+import java.util.Map;
+import com.ifba.middleware.observer.Event;
+
 public class DeviceEvent implements Event {
 
     private final String eventType;

@@ -1,3 +1,7 @@
+package com.ifba.middleware.singleton;
+
+import java.time.LocalDateTime;
+
 public class SystemConfig {
     
     private static SystemConfig instance;

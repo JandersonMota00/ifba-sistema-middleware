@@ -1,3 +1,10 @@
+package com.ifba.middleware.factory;
+
+import com.ifba.middleware.devices.Device;
+import com.ifba.middleware.devices.Fan;
+import com.ifba.middleware.devices.Light;
+import com.ifba.middleware.devices.Sensor;
+
 public class DefaultDeviceFactory implements DeviceFactory {
 
     @Override

@@ -1,3 +1,9 @@
+package com.ifba.middleware.composite;
+
+import com.ifba.middleware.decorator.UIComponent;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Panel implements UIComponent {
     private final String name;
     private final List<UIComponent> children = new ArrayList<>();

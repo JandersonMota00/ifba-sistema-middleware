@@ -1,3 +1,7 @@
+package com.ifba.middleware.command;
+
+import com.ifba.middleware.devices.Device;
+
 public class LightOnCommand implements Command {
 
     private final Device light;

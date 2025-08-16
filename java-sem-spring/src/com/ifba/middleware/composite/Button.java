@@ -1,3 +1,7 @@
+package com.ifba.middleware.composite;
+
+import com.ifba.middleware.decorator.UIComponent;
+
 public class Button implements UIComponent {
 
     private final String label;

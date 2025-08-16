@@ -1,3 +1,7 @@
+package com.ifba.middleware.composite;
+
+import com.ifba.middleware.decorator.UIComponent;
+
 public class Text implements UIComponent {
 
     private final String content;

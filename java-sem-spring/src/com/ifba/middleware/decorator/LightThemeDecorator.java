@@ -1,3 +1,10 @@
+package com.ifba.middleware.decorator;
+
+import com.ifba.middleware.decorator.UIComponent;
+import com.ifba.middleware.decorator.ThemedComponent;
+import com.ifba.middleware.decorator.DarkThemeDecorator;
+import com.ifba.middleware.decorator.LightThemeDecorator;
+
 public class LightThemeDecorator implements ThemedComponent {
 
     private final UIComponent component;

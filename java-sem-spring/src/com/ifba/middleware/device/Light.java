@@ -1,3 +1,7 @@
+package com.ifba.middleware.device;
+
+import java.util.UUID;
+
 public class Light implements Device {
 
     private final String deviceId;
